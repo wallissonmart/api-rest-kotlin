@@ -16,6 +16,7 @@ class ErrorHandler {
         val errorResponse = ErrorResponse(statusCode = HttpStatus.BAD_REQUEST.value(), message = exception.message!!)
         return ResponseEntity.badRequest().body(errorResponse)
     }
+
 }
 
 data class ErrorResponse(val statusCode: Int, val message: String)
