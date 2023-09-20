@@ -72,7 +72,7 @@ class AccountControllerTest {
     @Test
     fun `test update account`() {
         val account = accountRepository
-            .save(Account(name = "Teste", document = "123", phone = "77774444"))
+            .save(Account(name = "João Teste", document = "123", phone = "77774444"))
             .copy(name = "Updated")
         val json = ObjectMapper().writeValueAsString(account)
 
