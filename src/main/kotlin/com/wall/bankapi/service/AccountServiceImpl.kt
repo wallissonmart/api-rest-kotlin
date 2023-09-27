@@ -20,6 +20,7 @@ class AccountServiceImpl(private val repository: AccountRepository) : AccountSer
         return repository.findAll()
     }
 
+
     override fun getById(id: Long): Optional<Account> {
         return repository.findById(id)
     }

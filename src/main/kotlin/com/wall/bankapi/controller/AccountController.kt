@@ -1,7 +1,6 @@
 package com.wall.bankapi.controller
 
 import com.wall.bankapi.model.Account
-import com.wall.bankapi.repository.AccountRepository
 import com.wall.bankapi.service.AccountServiceImpl
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
