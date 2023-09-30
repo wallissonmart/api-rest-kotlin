@@ -25,9 +25,12 @@ class AccountController(private val service: AccountServiceImpl) {
     @GetMapping
     fun getAll(): List<Account> = service.getAll()
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     fun getById(@PathVariable id: Long): ResponseEntity<Account> =
         service.getById(id).map { ResponseEntity.ok(it) }.orElse(ResponseEntity.notFound().build())
+
+    @GetMapping("/name/{name}")
+    fun getByName(@PathVariable name: String): List<Account> = service.getByName(name)
 
     @PutMapping("/{id}")
     fun update(@PathVariable id: Long, @RequestBody account: Account): ResponseEntity<Account> =
@@ -36,7 +39,7 @@ class AccountController(private val service: AccountServiceImpl) {
         }.orElse(ResponseEntity.notFound().build())
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: Long) : ResponseEntity<Void> {
+    fun delete(@PathVariable id: Long): ResponseEntity<Void> {
         service.delete(id)
         return ResponseEntity<Void>(HttpStatus.OK)
     }
