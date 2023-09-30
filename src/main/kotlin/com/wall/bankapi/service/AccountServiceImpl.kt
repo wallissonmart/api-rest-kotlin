@@ -25,6 +25,10 @@ class AccountServiceImpl(private val repository: AccountRepository) : AccountSer
         return repository.findById(id)
     }
 
+    override fun getByName(name: String): List<Account>{
+        return repository.findAll()
+    }
+
     override fun update(id: Long, account: Account): Optional<Account> {
         val optional = getById(id)
         if (optional.isEmpty) Optional.empty<Account>()
