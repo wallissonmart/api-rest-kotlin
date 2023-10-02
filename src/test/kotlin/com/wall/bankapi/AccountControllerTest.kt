@@ -42,13 +42,33 @@ class AccountControllerTest {
     fun `test find by id`() {
         val account = accountRepository.save(Account(name = "João Teste", document = "123", phone = "99998888"))
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/accounts/${account.id}"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/accounts/id/${account.id}"))
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.jsonPath("\$.id").value(account.id))
             .andExpect(MockMvcResultMatchers.jsonPath("\$.name").value(account.name))
             .andExpect(MockMvcResultMatchers.jsonPath("\$.document").value(account.document))
             .andExpect(MockMvcResultMatchers.jsonPath("\$.phone").value(account.phone))
             .andDo(MockMvcResultHandlers.print())
+    }
+
+    @Test
+    fun `test find by name`() {
+        val account1 = accountRepository.save(Account(name = "João Carlos", document = "123", phone = "99998888"))
+        val account2 = accountRepository.save(Account(name = "Raimundo", document = "123", phone = "99998888"))
+        val account3 = accountRepository.save(Account(name = "Jonas Pereira", document = "123", phone = "99998888"))
+        val nameSearch = "jo"
+
+        val result = mockMvc.perform(MockMvcRequestBuilders.get("/accounts/name/$nameSearch"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn()
+
+        val responseBody = result.response.getContentAsString(Charsets.UTF_8)
+
+        Assertions.assertTrue(responseBody.contains("João Carlos"))
+        Assertions.assertTrue(responseBody.contains("Jonas Pereira"))
+
+        Assertions.assertFalse(responseBody.contains("Raimundo"))
     }
 
     @Test
