@@ -55,7 +55,7 @@ class AccountControllerTest {
     fun `test find by name`() {
         val account1 = accountRepository.save(Account(name = "João Carlos", document = "123", phone = "99998888"))
         val account2 = accountRepository.save(Account(name = "Raimundo", document = "123", phone = "99998888"))
-        val account3 = accountRepository.save(Account(name = "Jonas Pereira", document = "123", phone = "99998888"))
+        val account3 = accountRepository.save(Account(name = "Jonas Pereira", document = "12345", phone = "99998888"))
         val nameSearch = "jo"
 
         val result = mockMvc.perform(MockMvcRequestBuilders.get("/accounts/name/$nameSearch"))
@@ -73,7 +73,7 @@ class AccountControllerTest {
 
     @Test
     fun `test create account`() {
-        val account = Account(name = "Flávio", document = "1234", phone = "99998888")
+        val account = Account(name = "Flávio", document = "12345", phone = "99998888")
         val json = ObjectMapper().writeValueAsString(account)
         accountRepository.deleteAll()
 
