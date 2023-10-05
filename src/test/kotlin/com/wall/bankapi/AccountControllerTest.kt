@@ -73,7 +73,7 @@ class AccountControllerTest {
 
     @Test
     fun `test create account`() {
-        val account = Account(name = "Flávio", document = "123", phone = "99998888")
+        val account = Account(name = "Flávio", document = "1234", phone = "99998888")
         val json = ObjectMapper().writeValueAsString(account)
         accountRepository.deleteAll()
 
