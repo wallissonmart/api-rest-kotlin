@@ -55,7 +55,7 @@ class AccountControllerTest {
     fun `test find by name`() {
         val account1 = accountRepository.save(Account(name = "João Carlos", document = "123", phone = "99998888"))
         val account2 = accountRepository.save(Account(name = "Raimundo", document = "123", phone = "99998888"))
-        val account3 = accountRepository.save(Account(name = "Jonas Pereira", document = "1234", phone = "99998888"))
+        val account3 = accountRepository.save(Account(name = "Jonas Silva", document = "123", phone = "99998888"))
         val nameSearch = "jo"
 
         val result = mockMvc.perform(MockMvcRequestBuilders.get("/accounts/name/$nameSearch"))
