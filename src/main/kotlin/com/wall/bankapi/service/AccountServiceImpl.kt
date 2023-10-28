@@ -3,7 +3,6 @@ package com.wall.bankapi.service
 import com.wall.bankapi.model.Account
 import com.wall.bankapi.repository.AccountRepository
 import org.springframework.stereotype.Service
-import org.springframework.util.Assert
 import java.util.*
 
 @Service
