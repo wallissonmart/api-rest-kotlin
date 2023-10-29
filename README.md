@@ -21,7 +21,6 @@ A API Kotlin Bancária é um aplicativo de servidor desenvolvido em Kotlin que f
 ## Pré-requisitos
 
 - Ambiente de desenvolvimento Java e Kotlin.
-- Gerenciador de pacotes Gradle ou Maven.
 - IDE de sua escolha (recomenda-se o uso do IntelliJ IDEA).
 
 ## Configuração e Execução
